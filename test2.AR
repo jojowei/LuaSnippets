@@ -1,0 +1,36 @@
+-- working with Scara Robot --
+local d = p1    -- standby position
+local q = p2    -- Take-in position
+local f1 = p3   -- Feeding position 1
+local f2 = p4   -- Feeding position 2
+local sucker = 2  
+
+function main()
+	MotOn()
+	DO(sucker, OFF)    -- DO, Digital Out
+ 	MArchP(d, 5, 5, 5) -- the 1st parameter of MArchP() is the target position. (here, the starting position isn't a must.)
+	Delay(100)
+  
+	while true do
+	if DI(5) == ON then  -- DI, Digital In 
+		-- 1st feeding process --
+		MArchP(q,5,5,5)
+		DO(sucker, ON)
+		Delay(100)
+		MArchP(f1,5,5,5)
+		DO(sucker, OFF)
+		Delay(100)
+    
+		-- 2ed feeding process --
+		MArchP(q,5,5,5)
+		D0(sucker, ON)
+		Delay(100)
+		MArchP(f2,5,5,5)
+		DO(sucker, OFF)
+		Delay(100)
+    
+		-- back to the standby position --
+		MArchP(d,5,5,5)
+	end
+	end
+end
