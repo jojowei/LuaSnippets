@@ -1,6 +1,13 @@
+--[[
+   author: Jojo Wei
+   date: 31/03/2019
+   function：catch sth and move them to two different places. 
+   	"d", "p1", "q", "p2", "f1", "p3', "f2", "p4", "sucker" in the code have to been set on the robot machine while using it.  
+   version： 1.0
+--]]
 -- working with Scara Robot --
-local d = p1    -- standby position
-local q = p2    -- Take-in position
+local d = p1    -- standby position. "d" from dai ji wei in Chinese.
+local q = p2    -- Take-in position. "q" from qu liao wei in Chinese.
 local f1 = p3   -- Feeding position 1
 local f2 = p4   -- Feeding position 2
 local sucker = 2  
